@@ -1,0 +1,71 @@
+<div class="card w-50 mx-auto mt-4">
+<h1 class="card headet text-center">Regestration Form</h1>
+<div>
+    <form [formGroup]="regForm" class="container">
+        <div>
+            <div class="card-body">
+                <label for="">First Name</label><span class="required-asterisk">*</span>
+                <input type="text" formControlName="firstname" class="form-control">
+                <div *ngIf="regForm.controls['firstname'].touched && regForm.controls['firstname']?.['errors']">
+                    <div *ngIf="regForm.controls['firstname']?.['errors']?.['required']" class="required-asterisk">
+                        First Name is required
+                    </div>
+                    <div *ngIf="regForm.controls['firstname']?.['errors']?.['minlength']" class="required-asterisk">
+                        First Name sholud be minimum of 4 characters
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <label for="">Last Name</label><span class="required-asterisk">*</span>
+                <input type="text" formControlName="lastname" class="form-control">
+                <div *ngIf="regForm.controls['lastname'].touched && regForm.controls['lastname']?.['errors']">
+                    <div *ngIf="regForm.controls['lastname']?.['errors']?.['required']" class="required-asterisk">
+                        Last Name is required
+                    </div>
+                    <div *ngIf="regForm.controls['lastname']?.['errors']?.['minlength']" class="required-asterisk">
+                        Last Name sholud be minimum of 4 characters
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <label for="">Email</label><span class="required-asterisk">*</span>
+                <input type="text" formControlName="email" class="form-control">
+                <div *ngIf="regForm.controls['email'].touched && regForm.controls['email']?.['errors']">
+                    <div *ngIf="regForm.controls['email']?.['errors']?.['required']" class="required-asterisk">
+                        Email is required
+                    </div>
+                    <div *ngIf="regForm.controls['email']?.['errors']?.['email']" class="required-asterisk">
+                        Please enter valid email
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <label>Password</label><span class="required-asterisk">*</span>
+                <input type="password" formControlName="password" class="form-control">
+                <div *ngIf="regForm.controls['password'].touched && regForm.controls['password']?.['errors']">
+                    <div *ngIf="regForm.controls['password']?.['errors']?.['required']" class="required-asterisk">
+                        Password is required
+                    </div>
+                    <div *ngIf="regForm.controls['password']?.['errors']?.['minlength']" class="required-asterisk">
+                        Password should be minimum 8 characters
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <label>Confirm Password</label><span class="required-asterisk">*</span>
+                <input type="password" formControlName="confirmPassword" class="form-control">
+                <div *ngIf="regForm.controls['confirmPassword']?.['touched']">
+                    <div *ngIf="regForm.controls['confirmPassword']?.['errors']?.['required']" class="required-asterisk">
+                        Confirm Password is required
+                    </div>
+                    <div *ngIf="regForm['errors']?.['passwordMatch']" class="required-asterisk">
+                        Confirm Password not matching with password
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button (click)="show(regForm)" [disabled]="regForm.invalid" class="btn btn-primary" >Regester</button>
+        <a routerLink="/login">Login</a><span>(For existing user)</span>
+    </form>
+</div>
+</div>

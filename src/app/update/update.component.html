@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <button routerLink="/home" class="btn btn-light">Home</button>
+    <button class="btn btn-light" (click)="[remove(),fun()]">Logout</button>
+</nav>
+<div class="card w-50 mx-auto mt-4">
+    <h1 class="card headet text-center">Update Employee Details</h1>
+    <div>
+        <form class="container">
+            <div>
+                <div class="card-body">
+                    <label for="">Employee Id</label>
+                    <input type="text" class="form-control" [value]="abc['id']" readonly="readonly" name="id">
+                </div>
+                <div class="card-body">
+                    <label for="">Employee Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="abc['name']" name="name">
+                </div>
+                <div class="card-body">
+                    <label for="">Date of Birth</label>
+                    <input type="text" class="form-control" [(ngModel)]="abc['dob']" name="dob">
+                </div>
+                <div class="card-body">
+                    <label for="">Mobile Number</label>
+                    <input type="text" class="form-control" [(ngModel)]="abc['mobile']" name="mobile">
+                </div>
+                <button (click)="updateEmp()" class="btn btn-warning">Update</button>
+                <button class="btn btn-danger" routerLink="/home">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
