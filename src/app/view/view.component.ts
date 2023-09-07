@@ -25,6 +25,6 @@ export class ViewComponent {
   }
   fun()
   {
-    this.router.navigate(['/app']);
+    this.router.navigate(['/login']);
   }
 }

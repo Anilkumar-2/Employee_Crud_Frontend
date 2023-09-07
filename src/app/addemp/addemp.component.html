@@ -35,8 +35,8 @@
                     </div>
                 </div>
             </div>
-            <button (click)="show(empform)" class="btn btn-primary">Proceed</button>
+            <button (click)="show(empform)" class="btn btn-primary" [disabled]="empform.invalid">Proceed</button>
             <button class="btn btn-danger" routerLink="/home">Cancel</button>
         </form>
     </div>
-    </div>
+</div>

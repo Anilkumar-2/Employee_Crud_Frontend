@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
-// import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegesterComponent } from './regester/regester.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +17,7 @@ import { ViewComponent } from './view/view.component';
 import { UpdateComponent } from './update/update.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -36,15 +38,18 @@ import { ChildComponent } from './child/child.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-    // ToastrModule.forRoot(
-    //   {
-    //     timeOut: 3000,
-    //     progressBar: true,
-    //     progressAnimation: 'decreasing',
-    //     positionClass: 'toast-top-right'
-    //   }
-    // )
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 1000,
+        // progressBar: true,
+        // progressAnimation: 'decreasing',
+        positionClass: 'toast-top-right',
+        preventDuplicates: true
+      }
+    ),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

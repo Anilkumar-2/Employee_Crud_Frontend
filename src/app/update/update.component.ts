@@ -3,6 +3,7 @@ import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { HeadService } from '../head.service';
 import { employee } from '../EmployeeModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update',
@@ -14,11 +15,12 @@ export class UpdateComponent {
   public dataId!: number;
   employee!: any
   // regForm: FormGroup
-  constructor(private head:HeadService, private activatedroute: ActivatedRoute, private router: Router)
+  constructor(private head:HeadService, private activatedroute: ActivatedRoute, private router: Router, private toastr:ToastrService)
   {
   }
   abc=this.head.EmployeeData
   updateEmp() { 
+    this.showToaster();
     this.head.onUpdate(this.abc).subscribe((res) => { 
       console.log(res)
     }) 
@@ -29,7 +31,11 @@ export class UpdateComponent {
   }
   fun()
   {
-    this.router.navigate(['/app']);
-
+    this.head.logoutToaster();
+    this.router.navigate(['/login']);
+  }
+  showToaster()
+  {
+    this.toastr.success("Emplyee Details Updated!!")
   }
 }

@@ -33,14 +33,15 @@ export class ChildComponent implements OnChanges, OnInit, OnDestroy, DoCheck, Af
   ngAfterContentChecked(): void {
     console.log("AfterContentChecked")
   }
+
+  ngOnDestroy() {
+    // clearInterval(this.stop)
+    console.log("Child OnDestroy" + this.greet)
+  }
   ngAfterViewInit(): void {
     console.log("AfterViewInit child")
   }
   ngAfterViewChecked(): void {
     console.log("AfterViewChecked child")
-  }
-  ngOnDestroy() {
-    // clearInterval(this.stop)
-    console.log("Child OnDestroy" + this.greet)
   }
 }

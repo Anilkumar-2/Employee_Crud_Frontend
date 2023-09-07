@@ -7,5 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tasksample';
-  flag:boolean=false;
+  flag:boolean=true;
+  change()
+  {
+    // debugger
+ if(this.flag=true){
+  this.flag=false;
+ }
+ else{
+  this.flag=true;
+ }
+
+  }
 }

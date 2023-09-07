@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { HeadService } from '../head.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { HeadService } from '../head.service';
 })
 export class AddempComponent {
   empform: FormGroup
-  constructor(private head:HeadService, private activatedRoute:ActivatedRoute, private router:Router) {
+  constructor(private head:HeadService, private activatedRoute:ActivatedRoute, private router:Router,private toastr:ToastrService) {
     this.empform= new FormGroup(
       {
         name:new FormControl(null, [Validators.required]),
@@ -26,6 +27,7 @@ export class AddempComponent {
   }
   addEmployee(empform:any)
   {
+    this.showToastr();
     return this.head.onAddEmp(this.empform.value).subscribe((res)=>{
       console.log(res)
     })
@@ -36,6 +38,11 @@ export class AddempComponent {
   }
   fun()
   {
+    this.head.logoutToaster();
     this.router.navigate(['/app']);
+  }
+  showToastr()
+  {
+    this.toastr.success("New Employee details added!!")
   }
 }
